@@ -3,95 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeezNerds — For Students, By Students</title>
-<meta name="description" content="DeezNerds: the all-in-one student toolkit. Notes, PYQs, study squads, deadlines and more. Built for students, by students. Launching soon.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤓</text></svg>">
+<title>NerdStack — For Students, By Students</title>
+<meta name="description" content="NerdStack: the all-in-one student toolkit. Notes, PYQs, study squads, deadlines and more. Built for students, by students. Launching soon.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231f3a2e'/><text x='50' y='70' font-family='Georgia,serif' font-size='62' text-anchor='middle' fill='%23f5f0e6'>N</text></svg>">
 <style>
   :root{
-    --bg:#0b0b14; --card:#14142a; --text:#ececf5; --muted:#9a9ab8;
-    --accent:#7c5cff; --accent2:#00e0b8; --warn:#ffcc4d;
+    --paper:#f5f0e6; --paper2:#ede6d8; --ink:#1b1a17; --muted:#6b655a;
+    --line:#d8cfbd; --forest:#1f3a2e; --brass:#a07a3f;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,.logo,.num{font-family:var(--serif);font-weight:400}
+  em{font-style:italic;color:var(--forest)}
 
-  /* glow background */
-  .blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.35;z-index:-1}
-  .b1{width:500px;height:500px;background:var(--accent);top:-150px;left:-150px}
-  .b2{width:450px;height:450px;background:var(--accent2);bottom:-150px;right:-150px}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+  .logo{font-size:1.5rem;letter-spacing:.2px}
+  .logo b{font-weight:600}
+  nav ul{display:flex;gap:32px;list-style:none;font-size:.9rem;color:var(--muted)}
+  nav ul a:hover{color:var(--ink)}
 
-  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
-  .logo{font-weight:800;font-size:1.4rem;letter-spacing:-.5px}
-  .logo span{color:var(--accent2)}
-  nav ul{display:flex;gap:28px;list-style:none;color:var(--muted);font-size:.95rem}
-  nav ul a:hover{color:var(--text)}
-
-  .hero{text-align:center;padding:90px 0 70px}
-  .pill{display:inline-block;padding:6px 14px;border:1px solid #2c2c4a;border-radius:999px;font-size:.85rem;color:var(--warn);background:#1a1a30;margin-bottom:26px}
-  h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1.05;font-weight:900;letter-spacing:-2px}
-  .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{max-width:640px;margin:22px auto 36px;color:var(--muted);font-size:1.15rem}
+  .hero{text-align:center;padding:110px 0 90px}
+  .kicker{display:inline-block;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:28px}
+  .kicker::before,.kicker::after{content:"";display:inline-block;width:28px;height:1px;background:var(--brass);vertical-align:middle;margin:0 12px}
+  h1{font-size:clamp(2.8rem,7vw,5.2rem);line-height:1.04;letter-spacing:-1px}
+  .sub{max-width:600px;margin:26px auto 40px;color:var(--muted);font-size:1.12rem}
 
   form.wait{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  form.wait input{padding:14px 18px;min-width:280px;border-radius:12px;border:1px solid #2c2c4a;background:#12122a;color:var(--text);font-size:1rem;outline:none}
-  form.wait input:focus{border-color:var(--accent)}
-  .btn{padding:14px 26px;border-radius:12px;border:none;font-weight:700;font-size:1rem;cursor:pointer;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0b14;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
+  form.wait input{padding:14px 18px;min-width:290px;border:1px solid var(--line);background:#fffdf8;color:var(--ink);font-size:1rem;border-radius:2px;outline:none}
+  form.wait input:focus{border-color:var(--forest)}
+  .btn{display:inline-block;padding:14px 28px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-size:.95rem;letter-spacing:.04em;cursor:pointer;border-radius:2px;transition:background .2s,border-color .2s}
+  .btn:hover{background:var(--forest);border-color:var(--forest)}
   .note{margin-top:14px;font-size:.85rem;color:var(--muted)}
-  #thanks{display:none;margin-top:14px;color:var(--accent2);font-weight:600}
+  #thanks{display:none;margin-top:14px;color:var(--forest);font-family:var(--serif);font-size:1.15rem;font-style:italic}
 
-  .countdown{display:flex;gap:14px;justify-content:center;margin-top:46px}
-  .cd{background:var(--card);border:1px solid #23234a;border-radius:14px;padding:14px 18px;min-width:86px}
-  .cd b{display:block;font-size:2rem;font-weight:800}
-  .cd small{color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
+  .countdown{display:flex;justify-content:center;margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:520px;margin-left:auto;margin-right:auto}
+  .cd{flex:1;padding:18px 0}
+  .cd+.cd{border-left:1px solid var(--line)}
+  .cd b{display:block;font-family:var(--serif);font-weight:400;font-size:2.2rem;line-height:1.1}
+  .cd small{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.18em}
 
-  section{padding:80px 0}
-  h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-align:center;letter-spacing:-1px}
-  .lead{text-align:center;color:var(--muted);margin:10px auto 48px;max-width:600px}
+  section{padding:90px 0}
+  .label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);text-align:center;margin-bottom:14px}
+  h2{font-size:clamp(2rem,4vw,2.8rem);text-align:center;line-height:1.15}
+  .lead{text-align:center;color:var(--muted);margin:14px auto 56px;max-width:560px}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-  .card{background:var(--card);border:1px solid #23234a;border-radius:18px;padding:26px;transition:transform .2s,border-color .2s}
-  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
-  .card .ic{font-size:2rem;margin-bottom:12px}
-  .card h3{font-size:1.15rem;margin-bottom:6px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .card{padding:34px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .2s}
+  .card:hover{background:var(--paper2)}
+  .card .num{color:var(--brass);font-size:.95rem;margin-bottom:14px;display:block}
+  .card h3{font-size:1.35rem;margin-bottom:8px}
   .card p{color:var(--muted);font-size:.95rem}
-  .tag{display:inline-block;margin-top:12px;font-size:.72rem;padding:3px 10px;border-radius:999px;background:#22224a;color:var(--accent2)}
 
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;text-align:center}
-  .stat b{display:block;font-size:2.6rem;font-weight:900}
-  .stat span{color:var(--muted)}
+  .band{background:var(--forest);color:var(--paper)}
+  .band .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));text-align:center;padding:64px 0}
+  .stat+.stat{border-left:1px solid rgba(245,240,230,.18)}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:2.6rem;color:#e6d3ae}
+  .stat span{font-size:.9rem;opacity:.8}
 
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;counter-reset:s}
-  .step{position:relative;padding:26px 26px 26px 72px;background:var(--card);border-radius:18px;border:1px solid #23234a}
-  .step::before{counter-increment:s;content:counter(s);position:absolute;left:22px;top:24px;width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-weight:800}
-  .step h3{margin-bottom:4px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:48px}
+  .step .num{font-size:3rem;color:var(--brass);line-height:1;display:block;margin-bottom:12px}
+  .step h3{font-size:1.3rem;margin-bottom:6px}
   .step p{color:var(--muted);font-size:.95rem}
 
-  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-  .quote{background:var(--card);border-radius:18px;padding:24px;border:1px solid #23234a}
-  .quote p{font-style:italic;margin-bottom:12px}
-  .quote small{color:var(--muted)}
+  .why{max-width:760px;margin:0 auto;text-align:center}
+  .why p{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.5}
+  .why small{display:block;margin-top:22px;color:var(--muted);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
 
-  details{background:var(--card);border:1px solid #23234a;border-radius:14px;padding:18px 22px;margin-bottom:12px;max-width:760px;margin-left:auto;margin-right:auto}
-  summary{cursor:pointer;font-weight:600}
+  .faq{max-width:760px;margin:0 auto;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line);padding:22px 4px}
+  summary{cursor:pointer;font-family:var(--serif);font-size:1.2rem;list-style:none;display:flex;justify-content:space-between}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--brass)}
+  details[open] summary::after{content:"–"}
   details p{color:var(--muted);margin-top:10px}
 
-  .cta{text-align:center;background:linear-gradient(135deg,#1d1640,#0f2a2a);border-radius:26px;padding:60px 24px;border:1px solid #2c2c4a}
+  .cta{text-align:center;border:1px solid var(--ink);padding:72px 28px;background:#fffdf8}
+  .cta .lead{margin-bottom:32px}
 
-  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid #1d1d36;margin-top:40px}
-  footer .links{display:flex;gap:20px;justify-content:center;margin-bottom:10px}
+  footer{padding:44px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer .links{display:flex;gap:24px}
+  footer a:hover{color:var(--ink)}
 
-  @media (max-width:700px){nav ul{display:none}.countdown{gap:8px}.cd{min-width:70px;padding:10px}}
+  @media (max-width:700px){
+    nav ul{display:none}
+    .stat+.stat{border-left:none;border-top:1px solid rgba(245,240,230,.18)}
+    .stat{padding:18px 0}
+    footer{justify-content:center;text-align:center}
+  }
 </style>
 </head>
 <body>
-<div class="blob b1"></div><div class="blob b2"></div>
 
 <header class="wrap">
   <nav>
-    <div class="logo">Deez<span>Nerds</span> 🤓</div>
+    <div class="logo">Nerd<b>Stack</b></div>
     <ul>
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
@@ -103,90 +113,92 @@
 
 <main>
   <section class="hero wrap">
-    <div class="pill">🚀 Startup coming up — launching soon</div>
-    <h1>For Students,<br><span class="grad">By Students.</span></h1>
-    <p class="sub">DeezNerds is the all-in-one toolkit for surviving (and actually crushing) college. Notes, PYQs, study squads, deadlines, internships — one place, zero chaos.</p>
+    <div class="kicker">Launching soon</div>
+    <h1>For Students,<br><em>By Students.</em></h1>
+    <p class="sub">NerdStack is the all-in-one toolkit for college. Notes, previous-year papers, study groups, deadlines and internships, in one quiet, well-organised place.</p>
 
     <form class="wait" id="waitForm">
       <input type="email" placeholder="you@college.edu" required aria-label="Email">
       <button class="btn" type="submit">Join the Waitlist</button>
     </form>
-    <p id="thanks">You're on the list, nerd. 🎉 We'll ping you at launch.</p>
-    <p class="note">No spam. Just one email when we go live.</p>
+    <p id="thanks">Thank you. We'll write when we launch.</p>
+    <p class="note">One email at launch. Nothing else.</p>
 
-    <div class="countdown" id="countdown">
+    <div class="countdown">
       <div class="cd"><b id="d">--</b><small>Days</small></div>
       <div class="cd"><b id="h">--</b><small>Hours</small></div>
-      <div class="cd"><b id="m">--</b><small>Mins</small></div>
-      <div class="cd"><b id="s">--</b><small>Secs</small></div>
+      <div class="cd"><b id="m">--</b><small>Minutes</small></div>
+      <div class="cd"><b id="s">--</b><small>Seconds</small></div>
     </div>
   </section>
 
   <section id="features" class="wrap">
-    <h2>Everything a student needs. <span class="grad">Nothing they don't.</span></h2>
-    <p class="lead">We built the tools we wished we had at 3 AM before an endsem.</p>
+    <div class="label">What's inside</div>
+    <h2>Everything a student needs.<br><em>Nothing they don't.</em></h2>
+    <p class="lead">The tools we wished we had the night before an end-semester exam.</p>
     <div class="grid">
-      <div class="card"><div class="ic">📚</div><h3>Notes Vault</h3><p>Crowd-sourced, upvoted notes for every course. The topper's notes, now for everyone.</p><span class="tag">Core</span></div>
-      <div class="card"><div class="ic">📝</div><h3>PYQ Bank</h3><p>Previous year papers, sorted by course and professor, with community solutions.</p><span class="tag">Core</span></div>
-      <div class="card"><div class="ic">⏰</div><h3>Deadline Radar</h3><p>Assignments, quizzes and submissions in one timeline. Never miss a Moodle deadline again.</p><span class="tag">Core</span></div>
-      <div class="card"><div class="ic">👥</div><h3>Study Squads</h3><p>Find people in your course to grind with. Matched by schedule, subject and vibe.</p><span class="tag">Social</span></div>
-      <div class="card"><div class="ic">🤖</div><h3>AI Doubt Solver</h3><p>Stuck on a problem? Get step-by-step hints — not just answers — so you actually learn.</p><span class="tag">AI</span></div>
-      <div class="card"><div class="ic">💼</div><h3>Internship Board</h3><p>Curated internships, referrals and interview experiences from seniors who've been there.</p><span class="tag">Career</span></div>
-      <div class="card"><div class="ic">🛒</div><h3>Campus Marketplace</h3><p>Buy and sell textbooks, calculators, cycles and lab coats within your campus.</p><span class="tag">Community</span></div>
-      <div class="card"><div class="ic">📊</div><h3>GPA Planner</h3><p>Calculate your CGPA and figure out exactly what you need in endsems to hit your target.</p><span class="tag">Tools</span></div>
+      <div class="card"><span class="num">01</span><h3>Notes Vault</h3><p>Shared, upvoted notes for every course, organised by subject and semester.</p></div>
+      <div class="card"><span class="num">02</span><h3>PYQ Bank</h3><p>Previous-year papers sorted by course and professor, with community solutions.</p></div>
+      <div class="card"><span class="num">03</span><h3>Deadline Radar</h3><p>Assignments, quizzes and submissions on a single timeline, so nothing slips.</p></div>
+      <div class="card"><span class="num">04</span><h3>Study Groups</h3><p>Find classmates to study with, matched by course, schedule and pace.</p></div>
+      <div class="card"><span class="num">05</span><h3>Doubt Solver</h3><p>Step-by-step hints rather than bare answers, so the understanding sticks.</p></div>
+      <div class="card"><span class="num">06</span><h3>Internship Board</h3><p>Curated openings, referrals and interview notes from seniors who've been there.</p></div>
+      <div class="card"><span class="num">07</span><h3>Campus Marketplace</h3><p>Buy and sell textbooks, calculators and lab gear within your campus.</p></div>
+      <div class="card"><span class="num">08</span><h3>GPA Planner</h3><p>Track your CGPA and see exactly what you need to reach your target.</p></div>
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="stats">
-      <div class="stat"><b class="grad">10K+</b><span>notes ready at launch</span></div>
-      <div class="stat"><b class="grad">25+</b><span>campuses on the waitlist</span></div>
-      <div class="stat"><b class="grad">3 AM</b><span>peak usage (we know)</span></div>
-      <div class="stat"><b class="grad">₹0</b><span>for students. Forever.</span></div>
+  <div class="band">
+    <div class="wrap stats">
+      <div class="stat"><b>₹0</b><span>for students, always</span></div>
+      <div class="stat"><b>8</b><span>tools in one place</span></div>
+      <div class="stat"><b>100%</b><span>built by students</span></div>
     </div>
-  </section>
+  </div>
 
   <section id="how" class="wrap">
-    <h2>How it works</h2>
-    <p class="lead">Three steps. Less time than your attendance proxy takes.</p>
+    <div class="label">How it works</div>
+    <h2>Three steps. <em>That's all.</em></h2>
+    <p class="lead">Set up in less time than it takes to find last year's question paper.</p>
     <div class="steps">
-      <div class="step"><h3>Sign up with your college email</h3><p>Verified students only. Your campus, your people.</p></div>
-      <div class="step"><h3>Pick your courses</h3><p>We pull in notes, PYQs and deadlines for everything you're enrolled in.</p></div>
-      <div class="step"><h3>Study smarter</h3><p>Share, upvote, squad up and stop panicking before exams.</p></div>
+      <div class="step"><span class="num">i.</span><h3>Sign up with your college email</h3><p>Verified students only. Your campus, your people.</p></div>
+      <div class="step"><span class="num">ii.</span><h3>Choose your courses</h3><p>Notes, papers and deadlines for everything you're enrolled in, gathered automatically.</p></div>
+      <div class="step"><span class="num">iii.</span><h3>Study with less chaos</h3><p>Share, upvote, find a study group, and walk into exams prepared.</p></div>
     </div>
   </section>
 
   <section class="wrap">
-    <h2>Nerds are already hyped</h2>
-    <p class="lead">From our beta testers (yes, they're real students).</p>
-    <div class="quotes">
-      <div class="quote"><p>"Found the PYQs for a course nobody had papers for. Saved my semester."</p><small>— 3rd year, CSE</small></div>
-      <div class="quote"><p>"Deadline Radar is the only reason I submitted my assignment on time this month."</p><small>— 2nd year, ECE</small></div>
-      <div class="quote"><p>"Sold my old textbooks in a day and bought a cycle. 10/10."</p><small>— 4th year, Mech</small></div>
+    <div class="why">
+      <p>"Every semester, the same notes get rewritten, the same papers get hunted down, and the same deadlines get missed. We're students too, and we think that should be solved once."</p>
+      <small>Why we're building NerdStack</small>
     </div>
   </section>
 
   <section id="faq" class="wrap">
-    <h2>FAQ</h2>
-    <p class="lead">Questions? We've got answers.</p>
-    <details><summary>Is DeezNerds free?</summary><p>Yes. The core features are free for students, forever. We might add optional premium stuff later, but notes and PYQs stay free.</p></details>
-    <details><summary>When are you launching?</summary><p>Very soon. Join the waitlist and you'll be among the first to get access.</p></details>
-    <details><summary>Which colleges are supported?</summary><p>We're starting with a few campuses and expanding fast. Get your friends on the waitlist to bump your campus up the list.</p></details>
-    <details><summary>Can I contribute or join the team?</summary><p>Absolutely. We're students building for students. If you code, design or just have ideas, reach out.</p></details>
+    <div class="label">Questions</div>
+    <h2>Frequently asked</h2>
+    <p class="lead">If yours isn't here, write to us.</p>
+    <div class="faq">
+      <details><summary>Is NerdStack free?</summary><p>Yes. The core features are free for students, always. Notes and previous-year papers will stay free.</p></details>
+      <details><summary>When are you launching?</summary><p>Soon. Join the waitlist and you'll be among the first to get access.</p></details>
+      <details><summary>Which colleges are supported?</summary><p>We're starting with a small number of campuses and expanding from there. Ask your friends to join the waitlist to move your campus up the list.</p></details>
+      <details><summary>Can I contribute or join the team?</summary><p>Yes. We're students building for students. If you write code, design, or simply have ideas, get in touch.</p></details>
+    </div>
   </section>
 
   <section id="join" class="wrap">
     <div class="cta">
-      <h2>Be a founding nerd. 🤓</h2>
-      <p class="lead">Early users get a founding badge, beta access and bragging rights.</p>
+      <div class="label">Early access</div>
+      <h2>Be one of the <em>first.</em></h2>
+      <p class="lead">Founding members get early access and a direct line to the team building it.</p>
       <a href="#" class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Get Early Access</a>
     </div>
   </section>
 </main>
 
 <footer class="wrap">
-  <div class="links"><a href="#features">Features</a><a href="#faq">FAQ</a><a href="#join">Join</a></div>
-  <p>© <span id="yr"></span> DeezNerds. Made with caffeine and deadlines, for students by students.</p>
+  <span>© <span id="yr"></span> NerdStack. For students, by students.</span>
+  <div class="links"><a href="#features">Features</a><a href="#faq">FAQ</a><a href="mailto:rudra@nerdstack.me">Contact</a></div>
 </footer>
 
 <script>
@@ -197,8 +209,8 @@
     document.getElementById('thanks').style.display = 'block';
   });
   // Launch countdown: 30 days from first visit
-  var launch = localStorage.getItem('dn_launch');
-  if (!launch) { launch = Date.now() + 30 * 864e5; localStorage.setItem('dn_launch', launch); }
+  var launch = localStorage.getItem('ns_launch');
+  if (!launch) { launch = Date.now() + 30 * 864e5; localStorage.setItem('ns_launch', launch); }
   function tick() {
     var t = Math.max(0, launch - Date.now());
     var pad = function (n) { return String(n).padStart(2, '0'); };
